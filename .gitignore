@@ -6,6 +6,8 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 
+.codex
+.kitwright
 AGENTS.md
 Docs/
 
