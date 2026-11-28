@@ -11,9 +11,22 @@ public class SnowWeatherSystem : MonoBehaviour
     public float maxWorldY = 35f;
     public float minWordY = 0f;
     public RenderTexture heightRT;
+
+    [Header("覆雪参数")] public float _GlobalSnowProgress = 0.4f;//全局雪进度
+
+    public float maxSnowThickness = 1.0f;
     
-    [Header("覆雪参数")]
-    public float _GlobalSnowThickness = 0.5f;//全局雪厚度
+
+
+//id转换
+    //高度RT参数
+   private readonly int snowWorldAreaId = Shader.PropertyToID("_SnowWorldArea");
+   private readonly int topDownHeightRangeId = Shader.PropertyToID("_TopDownHeightRange");
+   private readonly int _TopDownHeightRTId = Shader.PropertyToID("_TopDownHeightRT");
+   
+   //雪地参数
+   private readonly int _GlobalSnowCoverageId = Shader.PropertyToID("_GlobalSnowCoverage");  
+   private readonly int GlobalSnowThicknessId = Shader.PropertyToID("_GlobalSnowThickness");
 
     
     void Start()
@@ -24,6 +37,9 @@ public class SnowWeatherSystem : MonoBehaviour
 
     void Setup()
     {
+        
+        
+        
         if (topDownCamera == null||heightRT == null) return;
         
         Vector3 targetPosition = target.transform.position;
@@ -47,16 +63,22 @@ public class SnowWeatherSystem : MonoBehaviour
         Vector4 _SnowWorldArea = new Vector4(targetPosition.x,targetPosition.z,GroundSize,1f/GroundSize); //xy为场景中心位置， z为区域边长，w为1/边长
         Vector4 _TopDownHeightRange =  new Vector4(minWordY-5f,maxWorldY-0.1f,0.0f,0.0f);//相机深度范围.x为底面高度，y为总范围
         
-        
-        int snowWorldAreaId = Shader.PropertyToID("_SnowWorldArea");
-        int topDownHeightRangeId = Shader.PropertyToID("_TopDownHeightRange");
-        int GlobalSnowThicknessId = Shader.PropertyToID("_GlobalSnowThickness");
-        int _TopDownHeightRTId = Shader.PropertyToID("_TopDownHeightRT");
-        
-        
+ 
+
+        //上传全局参数
         Shader.SetGlobalVector(snowWorldAreaId,_SnowWorldArea);
         Shader.SetGlobalVector(topDownHeightRangeId,_TopDownHeightRange);
-        Shader.SetGlobalFloat(GlobalSnowThicknessId,_GlobalSnowThickness);
         Shader.SetGlobalTexture(_TopDownHeightRTId,heightRT);
+    }
+
+    void Update()
+    {        
+        
+        float _GlobalSnowCoverage  = Mathf.Clamp01(_GlobalSnowProgress/0.4f);
+        float SnowThicknessFactor = Mathf.Clamp01(_GlobalSnowProgress-0.4f/0.6f);
+        
+        Shader.SetGlobalFloat(GlobalSnowThicknessId,SnowThicknessFactor*maxSnowThickness);
+        Shader.SetGlobalFloat(_GlobalSnowCoverageId,_GlobalSnowCoverage);
+
     }
 }

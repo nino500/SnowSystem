@@ -1,4 +1,4 @@
-Shader "Custom/WriteTopDownHeight"
+Shader "SnowSystem/WriteTopDownHeight"
 {
     Properties
     {

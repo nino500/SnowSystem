@@ -56,13 +56,7 @@ Shader "Custom/Debug"
                
                 float3 finalPosWS = basePosWS;
                 
-                #if defined(_ENABLE_VERTEX_SNOW)
-                //只有地面开启：按照遮挡和坡度往上长高
-                float sky = GetSkyOcclusion(basePosWS);
-                float slope = smoothstep(_SlopeThreshold-0.1,_SlopeThreshold+0.1,(normalWS.y));
-                
-                finalPosWS.y += _GlobalSnowThickness* sky * slope;
-                #endif
+                finalPosWS.y += GetSnowVertexOffset(basePosWS,normalWS,_SlopeThreshold,0.1);
                 
                 output.normalWS = normalWS;
                 output.basePosWS = basePosWS; //basePosWS留给片元着色计算sky occlusion
@@ -72,9 +66,9 @@ Shader "Custom/Debug"
 
             half4 frag(Varyings input) : SV_Target
             {
-                float sky = GetSkyOcclusion(input.basePosWS);
-                float slope = smoothstep(_SlopeThreshold-0.1,_SlopeThreshold+0.1,saturate(input.normalWS.y));
-                float snowMask = sky*slope;
+                float3 N = normalize(input.normalWS);
+                
+               float snowMask = GetSnowMask(input.basePosWS,N,_SlopeThreshold,0.1);
                 
                 return half4(lerp(half3(0.2,0.2,0.2),half3(0.95,0.95,1.0),snowMask),1.0);
                 

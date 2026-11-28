@@ -2882,7 +2882,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ab75365c20a40cd42a292007a49e6261, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5198,7 +5198,8 @@ MonoBehaviour:
   maxWorldY: 35
   minWordY: 0
   heightRT: {fileID: 8400000, guid: 79b8e8a3e16817d4a87c903044afc5ad, type: 2}
-  _GlobalSnowThickness: 0.73
+  _GlobalSnowThickness: 0.89
+  _GlobalSnowCoverage: 0.31
 --- !u!1 &545408455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7890955611245848210, guid: 3e8882ef32fcbe74ca47bd6d40b6d398,
@@ -6644,7 +6645,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 12cc290b288dacd449ef502842efac90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10195,7 +10196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 12cc290b288dacd449ef502842efac90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

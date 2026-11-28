@@ -1,20 +1,21 @@
 #ifndef SNOW_COMMON_INCLUDED 
 #define SNOW_COMMON_INCLUDED
 
-//本库主要给雪地系统提供常用函数和通用逻辑
+//本库主要给雪地系统提供全局参数和对应方法
+
 
 
 //TD 正交相机渲染高度图
 TEXTURE2D(_TopDownHeightRT);
 SAMPLER(sampler_TopDownHeightRT);
 
-
-
 float4 _SnowWorldArea; //xy为场景中心位置， z为区域边长，w为1/边长
 float4 _TopDownHeightRange;//相机深度范围x为底面高度，y为总范围
 float _GlobalSnowThickness;//全局雪厚度
+float _GlobalSnowCoverage;  // [v0.2 新增] 全局铺开率 (0~1)
 
-//计算当前位置是否露天
+
+//v0.1计算当前位置是否露天
 float GetSkyOcclusion(float3 basePosWS)
 {
     //1.
@@ -36,6 +37,39 @@ float GetSkyOcclusion(float3 basePosWS)
     
     
 
+    
+}
+
+//v0.2 斜坡阈值遮罩，Shading和Vertex Offset都要用
+float GetSnowSlopeMask(float3 normalWS,float threshold,float smoothness)
+{
+    return smoothstep(threshold-smoothness,threshold+smoothness,normalWS.y);
+    
+}
+
+
+//v0.2 最终覆雪遮罩，综合遮蔽和坡度阈值
+float GetSnowMask(float3 basePosWS,float3 normalWS,float slopeThreshold,float slopeSmoothness)
+{
+        float sky = GetSkyOcclusion(basePosWS);
+        float slope = GetSnowSlopeMask(basePosWS,slopeThreshold,slopeSmoothness);
+    return sky*slope;
+}
+
+//v0.2 顶点偏移接口：在覆雪遮罩下，根据全局雪厚度偏移顶点。
+//条件编译。
+//主相机和阴影相机都要使用
+float GetSnowVertexOffset(float3 basePosWS,float3 normalWS,float slopeThreshold,float slopeSmoothness)
+{
+    
+    #if defined(_ENABLE_VERTEX_SNOW)
+        float snowMask = GetSnowMask(basePosWS,normalWS,slopeThreshold,slopeSmoothness);
+        return _GlobalSnowThickness*snowMask;
+    #else
+        return 0.0;
+    
+    
+    #endif
     
 }
 
