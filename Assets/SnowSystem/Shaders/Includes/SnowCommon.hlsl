@@ -52,7 +52,7 @@ float GetSnowSlopeMask(float3 normalWS,float threshold,float smoothness)
 float GetSnowMask(float3 basePosWS,float3 normalWS,float slopeThreshold,float slopeSmoothness)
 {
         float sky = GetSkyOcclusion(basePosWS);
-        float slope = GetSnowSlopeMask(basePosWS,slopeThreshold,slopeSmoothness);
+        float slope = GetSnowSlopeMask(normalWS,slopeThreshold,slopeSmoothness);
     return sky*slope;
 }
 

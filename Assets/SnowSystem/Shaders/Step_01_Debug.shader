@@ -28,6 +28,8 @@ Shader "Custom/Debug"
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Assets/SnowSystem/Shaders/Includes/SnowCommon.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+                
        
             CBUFFER_START(UnityPerMaterial)
                 
@@ -68,7 +70,9 @@ Shader "Custom/Debug"
             {
                 float3 N = normalize(input.normalWS);
                 
+                
                float snowMask = GetSnowMask(input.basePosWS,N,_SlopeThreshold,0.1);
+                
                 
                 return half4(lerp(half3(0.2,0.2,0.2),half3(0.95,0.95,1.0),snowMask),1.0);
                 

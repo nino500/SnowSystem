@@ -133,7 +133,7 @@ Shader "SnowSystem/SnowEnvironmentLit"
                 float3 basePosWS = TransformObjectToWorld(input.positionOS.xyz);
                 
                 float3 finalPosWS = basePosWS;
-                    finalPosWS.y += GetSnowVertexOffset(finalPosWS,normalWS,_SlopeThreshold,_SlopeSmoothness);
+                    finalPosWS.y += GetSnowVertexOffset(basePosWS,normalWS,_SlopeThreshold,_SlopeSmoothness);
                 
                 float4 positionCS = TransformWorldToHClip(finalPosWS);
                 
@@ -174,9 +174,31 @@ Shader "SnowSystem/SnowEnvironmentLit"
                 half3 snowNormalTS = UnpackNormal(SAMPLE_TEXTURE2D(_SnowNormalMap, sampler_SnowNormalMap, snowUV));
                 half  snowRough = SAMPLE_TEXTURE2D(_SnowRoughnessMap, sampler_SnowRoughnessMap, snowUV).r;            
             
+            
+            
+            float4 shadowCoord = float4(0.0,0.0,0.0,0.0); 
+                  #if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+                shadowCoord = input.shadowCoord;
+            #elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
+                shadowCoord = TransformWorldToShadowCoord(input.finalPosWS);
+            #endif
+            
+                 float3 normalWS = normalize(input.normalWS);
+            float4 tangentWS = normalize(input.tangentWS);
+            float3 bitangentWS = cross(normalWS,tangentWS.xyz)*tangentWS.w*GetOddNegativeScale();
+            float3x3 TBN = float3x3(tangentWS.xyz,bitangentWS,normalWS);
+            
+            
+            Light mainLight = GetMainLight(shadowCoord);
+            float3 viewDirWS = GetWorldSpaceNormalizeViewDir(input.finalPosWS);
+            
+            
+
                 SnowSurfaceOutput snowSurface = GetSnowSurfaceOutput(baseAlbedo,baseNormalTS,1.0-baseRough,
                     snowAlbedo,snowNormalTS,1.0-snowRough,baseHeight,_HeightContrast,
-                    input.basePosWS,input.normalWS,_SlopeThreshold,_SlopeSmoothness);
+                    input.basePosWS,input.normalWS,_SlopeThreshold,_SlopeSmoothness,
+                    mainLight,viewDirWS);
+            
             
             SurfaceData surfaceData = (SurfaceData)0;
             surfaceData.albedo = snowSurface.albedo;
@@ -185,11 +207,10 @@ Shader "SnowSystem/SnowEnvironmentLit"
             surfaceData.alpha = 1.0;
             surfaceData.normalTS = snowSurface.normalTS;
             
+            surfaceData.emission = snowSurface.emission; //snow sss
+            
               
-            float3 normalWS = normalize(input.normalWS);
-            float4 tangentWS = normalize(input.tangentWS);
-            float3 bitangentWS = cross(normalWS,tangentWS.xyz)*tangentWS.w*GetOddNegativeScale();
-            float3x3 TBN = float3x3(tangentWS.xyz,bitangentWS,normalWS);
+       
             
             InputData inputData  = (InputData)0;
             inputData.positionWS = input.finalPosWS;
@@ -199,16 +220,10 @@ Shader "SnowSystem/SnowEnvironmentLit"
             inputData.bakedGI = SampleSH(inputData.normalWS);
             inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(input.positionCS);
             inputData.shadowMask = half4(1.0,1.0,1.0,1.0);
-            
+            inputData.shadowCoord = shadowCoord;
             inputData.fogCoord = input.fogFactor;
             
-            #if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
-                inputData.shadowCoord = input.shadowCoord;
-            #elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
-                inputData.shadowCoord = TransformWorldToShadowCoord(input.positionWS);
-            #endif
-            
-            
+      
             
             half4 color = UniversalFragmentPBR(inputData,surfaceData);
             color.rgb = MixFog(color.rgb,inputData.fogCoord);
@@ -335,9 +350,9 @@ Shader "SnowSystem/SnowEnvironmentLit"
             {
                 Varyings output;
                 float3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
-                float3 nomalWS = TransformViewToWorldNormal(input.normalOS);
+                float3 normalWS = TransformObjectToWorldNormal(input.normalOS);
                 
-                positionWS.y += GetSnowVertexOffset(positionWS,nomalWS,_SlopeThreshold,_SlopeSmoothness);
+                positionWS.y += GetSnowVertexOffset(positionWS,normalWS,_SlopeThreshold,_SlopeSmoothness);
                 
                 float4 positionCS = TransformWorldToHClip(positionWS);
                 

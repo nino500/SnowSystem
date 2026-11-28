@@ -11,18 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="047f8d2e-d39c-4c75-a00f-8e707eb8a90e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowShading.hlsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowShading.hlsl.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.YTBeer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YTBeer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Scenes/SCN_00_Blockout.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Scenes/SCN_00_Blockout.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Floor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Floor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Floor.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Floor.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Ground.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Stairs.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Materials/Stairs.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Scripts/SnowWeatherSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Scripts/SnowWeatherSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Settings.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowCommon.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowCommon.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowShading.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Includes/SnowShading.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/SnowEnvironmentLit.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/SnowEnvironmentLit.shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Step_01_Debug.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/Step_01_Debug.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/WriteTopDownHeight.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnowSystem/Shaders/WriteTopDownHeight.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,9 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.12/ShaderLibrary/SpaceTransforms.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/Editor/ShaderGraph/Includes/ShadowCasterPass.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/BRDF.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/Input.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/RealtimeLights.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/Shadows.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/SurfaceData.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/Shaders/ComplexLit.shader" root0="SKIP_HIGHLIGHTING" />
@@ -148,7 +146,8 @@
       <workItem from="1795506356613" duration="13124000" />
       <workItem from="1795683219029" duration="8342000" />
       <workItem from="1795698195719" duration="7740000" />
-      <workItem from="1795849889336" duration="1337000" />
+      <workItem from="1795849889336" duration="10272000" />
+      <workItem from="1795863708364" duration="2271000" />
     </task>
     <servers />
   </component>

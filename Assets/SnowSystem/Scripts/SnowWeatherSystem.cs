@@ -75,7 +75,7 @@ public class SnowWeatherSystem : MonoBehaviour
     {        
         
         float _GlobalSnowCoverage  = Mathf.Clamp01(_GlobalSnowProgress/0.4f);
-        float SnowThicknessFactor = Mathf.Clamp01(_GlobalSnowProgress-0.4f/0.6f);
+        float SnowThicknessFactor = Mathf.Clamp01((_GlobalSnowProgress-0.4f)/0.6f);
         
         Shader.SetGlobalFloat(GlobalSnowThicknessId,SnowThicknessFactor*maxSnowThickness);
         Shader.SetGlobalFloat(_GlobalSnowCoverageId,_GlobalSnowCoverage);

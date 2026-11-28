@@ -2682,13 +2682,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373055313}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0362536, y: -0.72022784, z: 0.6917607, w: -0.037745498}
-  m_LocalPosition: {x: -3.3581944, y: 4.502873, z: 11.070014}
+  m_LocalRotation: {x: 0.11555446, y: -0.57278484, z: 0.79908544, w: -0.14151748}
+  m_LocalPosition: {x: -14.144794, y: 3.2055204, z: -20.4586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -992.31, y: -546, z: 0}
+  m_LocalEulerAnglesHint: {x: -1018.03, y: -672.442, z: -130.273}
 --- !u!1 &380327396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2623482520892340244, guid: 3e8882ef32fcbe74ca47bd6d40b6d398,
@@ -2811,6 +2811,111 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1240272371}
   m_SourcePrefab: {fileID: 100100000, guid: 3e8882ef32fcbe74ca47bd6d40b6d398, type: 3}
+--- !u!1 &396590509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396590513}
+  - component: {fileID: 396590512}
+  - component: {fileID: 396590511}
+  - component: {fileID: 396590510}
+  m_Layer: 0
+  m_Name: Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &396590510
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396590509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &396590511
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396590509}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 69286137730cad44db1b6276816df750, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &396590512
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396590509}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &396590513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396590509}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.92419314, w: -0.38192555}
+  m_LocalPosition: {x: -6.59, y: 5.61, z: -12.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 224.906}
 --- !u!1 &399686560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5198,8 +5303,8 @@ MonoBehaviour:
   maxWorldY: 35
   minWordY: 0
   heightRT: {fileID: 8400000, guid: 79b8e8a3e16817d4a87c903044afc5ad, type: 2}
-  _GlobalSnowThickness: 0.89
-  _GlobalSnowCoverage: 0.31
+  _GlobalSnowProgress: 0.54
+  maxSnowThickness: 1
 --- !u!1 &545408455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7890955611245848210, guid: 3e8882ef32fcbe74ca47bd6d40b6d398,
@@ -13681,3 +13786,4 @@ SceneRoots:
   - {fileID: 993154063}
   - {fileID: 373055316}
   - {fileID: 179163085}
+  - {fileID: 396590513}
